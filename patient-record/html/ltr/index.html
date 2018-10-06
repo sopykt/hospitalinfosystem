@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="../../dist/css/style.min.css" rel="stylesheet">
+</head>
+<style type="text/css">
+	.login-form {
+		<!-- width: 385px;
+		margin: 30px auto; -->
+	}
+    .login-form form {        
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .login-btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .input-group-addon .fa {
+        font-size: 18px;
+    }
+    .login-btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+	.social-btn .btn {
+		border: none;
+        margin: 10px 3px 0;
+        opacity: 1;
+	}
+    .social-btn .btn:hover {
+        opacity: 0.9;
+    }
+	.social-btn .btn-primary {
+        background: #507cc0;
+    }
+	.social-btn .btn-info {
+		background: #64ccf1;
+	}
+	.social-btn .btn-danger {
+		background: #df4930;
+	}
+    .or-seperator {
+        margin-top: 20px;
+        text-align: center;
+        border-top: 1px solid #ccc;
+    }
+    .or-seperator i {
+        padding: 0 10px;
+        background: #f7f7f7;
+        position: relative;
+        top: -11px;
+        z-index: 1;
+    }   
+</style>
+<body ng-app="myApp">
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light" style="background:#87CEFA;">
+                <div class="navbar-header" data-logobg="skin5">
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="ti-menu ti-close"></i>
+                    </a>
+                    <div class="navbar-brand">
+                        <a href="index.html" class="logo">
+                            <b class="logo-icon">
+                                <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            </b>
+                            <span class="logo-text" style="color:#ADD8E6">
+                                <label>Chan Myae Hospital</label>
+                            </span>
+                        </a>
+                    </div>                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+                    <ul class="navbar-nav float-left mr-auto">
+                        <li class="nav-item search-box">
+                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                                <div class="d-flex align-items-center">
+                                    <div class="ml-1 d-none d-sm-block">
+                                        <span>{{name}}</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <form class="app-search position-absolute">
+                                <input type="text" class="form-control" placeholder="Search &amp; enter">
+                                <a class="srh-btn">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav float-right" id="userdropdown" style="display:none;">
+						<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated" ng-controller= "logoutCtrl">
+                                <a class="dropdown-item" ><i class="ti-user m-r-5 m-l-5"></i> {{email}}</a>
+                                <a class="dropdown-item" ><i class="ti-wallet m-r-5 m-l-5"></i> {{userrole}}</a>
+                                <a class="dropdown-item" ng-click="logoutFunction()"><i class="ti-email m-r-5 m-l-5"></i> Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin5" style="background:#4682B4;">
+            <div class="scroll-sidebar" >
+				<nav class="sidebar-nav" id = "navlogin">
+                    <ul id="sidebarnav" style="background:#4682B4;">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false">
+                                <i class="mdi mdi-login"></i>
+                                <span class="hide-menu">Login</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="sidebar-nav" id = "navuser" style="display:none;" >
+                    <ul id="sidebarnav" style="background:#4682B4;">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#/" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Registration</span>
+                            </a>
+                        </li>
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#register_doctor" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Doctor Registration</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#register_patient" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Patient Registration</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#registerp" aria-expanded="false">
+                                <i class="mdi mdi-pencil"></i>
+                                <span class="hide-menu">Appointment</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#appointmentlst" aria-expanded="false">
+                                <i class="mdi mdi-view-list"></i>
+                                <span class="hide-menu">Appointment List</span>
+                            </a>
+                        </li>
+						<li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#patientrecord" aria-expanded="false">
+                                <i class="mdi  mdi-file-document"></i>
+                                <span class="hide-menu">Patient Record</span> 
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#treatment" aria-expanded="false">
+                                <i class="mdi mdi-pharmacy"></i>
+                                <span class="hide-menu">Treatment</span>
+                            </a>
+                        </li>
+						<li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#pharmacy" aria-expanded="false">
+                                <i class="mdi mdi-pharmacy"></i>
+                                <span class="hide-menu">Pharmacy</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+				<nav class="sidebar-nav" id = "navpharm" style="display:none;" >
+                    <ul id="sidebarnav" style="background:#4682B4;">
+						<li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#pharmacy" aria-expanded="false">
+                                <i class="mdi mdi-pharmacy"></i>
+                                <span class="hide-menu">Pharmacy</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+				<nav class="sidebar-nav" id = "navdoctor" style="display:none;" >
+                    <ul id="sidebarnav" style="background:#4682B4;">
+                        <!-- <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#register_doctor" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Doctor Registration</span>
+                            </a>
+                        </li> -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#appointmentlst" aria-expanded="false">
+                                <i class="mdi mdi-view-list"></i>
+                                <span class="hide-menu">Appointment List</span>
+                            </a>
+                        </li>
+						<li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#patientrecord" aria-expanded="false">
+                                <i class="mdi  mdi-file-document"></i>
+                                <span class="hide-menu">Patient Record</span> 
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#treatment" aria-expanded="false">
+                                <i class="mdi mdi-pharmacy"></i>
+                                <span class="hide-menu">Treatment</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="sidebar-nav" id = "navstaff" style="display:none;" >
+                    <ul id="sidebarnav" style="background:#4682B4;">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#/" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Registration</span>
+                            </a>
+                        </li>
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#register_doctor" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Doctor Registration</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#register_patient" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i>
+                                <span class="hide-menu">Patient Registration</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#registerp" aria-expanded="false">
+                                <i class="mdi mdi-pencil"></i>
+                                <span class="hide-menu">Appointment</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#appointmentlst" aria-expanded="false">
+                                <i class="mdi mdi-view-list"></i>
+                                <span class="hide-menu">Appointment List</span>
+                            </a>
+                        </li>
+						<li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#patientrecord" aria-expanded="false">
+                                <i class="mdi  mdi-file-document"></i>
+                                <span class="hide-menu">Patient Record</span> 
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+				
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div ng-view></div>
+            <footer class="footer text-center" style="background: #87CEFA;">
+                All Rights Reserved by Nice admin. Designed and Developed by
+                <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+        </div>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+	<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- <script src="../../js/material.min.js"></script>
+	<script src="../../js/angular.min.js"></script>
+	<script src="../../js/angular-route.js"></script> -->
+	<script src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	
+	
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="../../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../../dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../../dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <!-- <script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
+	 -->
+	
+    <script src="../../js/moment.js"></script>
+	<script src="../../js/autocomplete.js"></script>
+	<script src="../../js/main.js"></script>
+</body>
+
+</html>
